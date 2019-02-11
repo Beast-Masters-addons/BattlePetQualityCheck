@@ -73,14 +73,14 @@ EventFrame:SetScript("OnEvent", function(self, event,...)
 			if OwnedSpeciesId == CapturedSpeciesID then -- Pet exists in journal
 				local _, _, _, _, owned_rarity = C_PetJournal.GetPetStats(owned_pet_guid)
 				--TODO: Add link
-				DEFAULT_CHAT_FRAME:AddMessage(string.format('Owned: %s%s|r level %d', quality_color(owned_rarity), species_name, owned_level))
+				-- DEFAULT_CHAT_FRAME:AddMessage(string.format('Owned: %s%s|r level %d', quality_color(owned_rarity), species_name, owned_level))
 				-- DEFAULT_CHAT_FRAME:AddMessage(string.format('|Hunit:%s|h:%s|h', owned_pet_guid, species_name))
 				owned_count = owned_count + 1
 			end
 		end
 		if owned_count == 3 then
 			--DEFAULT_CHAT_FRAME:AddMessage(string.format('You have %d pets of type %s', owned_count, species_name))
-			DEFAULT_CHAT_FRAME:AddMessage(string.format('You have 3 pets of type %s with quality below %s. Consider releasing one.', species_name, quality_color_string(4)))
+			DEFAULT_CHAT_FRAME:AddMessage(string.format('You have 3 pets of type %s, where at least 1 has quality below %s. Consider releasing one.', species_name, quality_color_string(4)))
 		end
 	end
 end)
