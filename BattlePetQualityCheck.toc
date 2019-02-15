@@ -2,7 +2,7 @@
 ## Title: Battle Pet Quality Check
 ## Author: datagutten
 
-## Version: 0.0.1
+## Version: 0.0.2
 
 ## Notes: Displays quality at the start of a wild pet battle
 
