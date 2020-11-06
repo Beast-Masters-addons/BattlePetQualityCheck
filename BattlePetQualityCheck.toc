@@ -5,6 +5,7 @@
 ## Version: @project-version@
 
 ## Notes: Displays quality at the start of a wild pet battle
+## X-Curse-Project-ID: 313836
 
 Libs\LibPetJournal-2.0\LibStub.lua
 Libs\LibPetJournal-2.0\CallbackHandler-1.0.lua
