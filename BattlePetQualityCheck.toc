@@ -1,4 +1,4 @@
-## Interface: 80100
+## Interface: 90001
 ## Title: Battle Pet Quality Check
 ## Author: datagutten
 
