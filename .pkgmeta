@@ -4,7 +4,7 @@ externals:
   libs/LibStub:
     url: https://repos.wowace.com/wow/libstub/trunk
     tag: latest
-  Libs/LibPetJournal-2.0:
+  libs/LibPetJournal-2.0:
     url: https://repos.curseforge.com/wow/libpetjournal-2-0
     tag: latest
     type: hg
