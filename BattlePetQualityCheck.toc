@@ -8,7 +8,14 @@
 ## X-Curse-Project-ID: 313836
 ## X-WoWI-ID: 25769
 
-libs\LibPetJournal-2.0\LibStub.lua
+#@non-no-lib-strip@
+# ## Dependencies: LibPetJournal-2.0, BM-utils
+#@end-non-no-lib-strip@
+
+#@no-lib-strip@
+libs\LibStub\LibStub.lua
 libs\LibPetJournal-2.0\CallbackHandler-1.0.lua
 libs\LibPetJournal-2.0\LibPetJournal-2.0.lua
+libs\BM-utils\addon\utils.lua
+#@end-no-lib-strip@
 BattlePetQualityCheck.lua

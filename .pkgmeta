@@ -8,3 +8,8 @@ externals:
     url: https://repos.curseforge.com/wow/libpetjournal-2-0
     tag: latest
     type: hg
+  libs/BM-utils:
+    url: https://github.com/Beast-Masters-addons/BM-utils.git
+    tag: v1.4.1
+
+enable-nolib-creation: yes
