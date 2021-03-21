@@ -1,4 +1,6 @@
 local LibPetJournal = LibStub("LibPetJournal-2.0")
+local utils = _G['BMUtils']
+utils = LibStub('BM-utils-1')
 local EventFrame = CreateFrame("Frame")
 EventFrame:RegisterEvent("PET_BATTLE_OPENING_DONE")
 EventFrame:RegisterEvent('NEW_PET_ADDED')
@@ -24,16 +26,12 @@ local function GetHighestOwnedPetQuality(SpeciesId)
 	return highest_quality
 end
 
-function quality_color(quality)
-	return _G.ITEM_QUALITY_COLORS[quality-1].hex
-end
-
 function quality_string(quality)
 	return _G["BATTLE_PET_BREED_QUALITY"..quality]
 end
 
 function quality_color_string(quality)
-	return string.format('%s%s|r', quality_color(quality), quality_string(quality))
+	return _G.ITEM_QUALITY_COLORS[quality]["color"]:WrapTextInColorCode(quality_string(quality))
 end
 
 function colorize(text, color)
@@ -115,8 +113,8 @@ function pet_count_check(species_id, limit, quality_limit)
 		return
 	end
 
-	DEFAULT_CHAT_FRAME:AddMessage(string.format('You have %d pets of type %s, where at least one has quality below %s:',
-			owned_count, species_name, quality_color_string(quality_limit)))
+	utils:printf('You have %d pets of type %s, where at least one has quality below %s:',
+			owned_count, species_name, quality_color_string(quality_limit))
 	for _, link in pairs(links) do
 		DEFAULT_CHAT_FRAME:AddMessage(link)
 	end
@@ -144,15 +142,15 @@ EventFrame:SetScript("OnEvent", function(self, event,...)
 				local owned_rarity = GetHighestOwnedPetQuality(SpeciesId)
 				if not owned_rarity then
 					-- Missing pet: [name]
-					upgrade_text = "|cFFccff00 (Not owned)|r"
-					upgrade_text = colorize('Not owned', 'ccff00')
+					--upgrade_text = "|cFFccff00 (Not owned)|r"
+					upgrade_text = utils:cprint('Not owned', 0xcc,0xff,0x00)
 				elseif owned_rarity < rarity then
 					upgrade_text = string.format('%s %s', colorize('Upgrade from', 'ccff00'), quality_color_string(owned_rarity))
 				else
 					upgrade_text = string.format('Already owns %s', quality_color_string(owned_rarity))
 				end
 				local name = C_PetBattles.GetName(2,i)
-				DEFAULT_CHAT_FRAME:AddMessage(string.format('Wild pet %d: %s%s|r (%s)', i, quality_color(rarity), name, upgrade_text))
+				utils:printf('Wild pet %d: %s%s|r (%s)', i, quality_color(rarity), name, upgrade_text)
 
 			end
 		end
