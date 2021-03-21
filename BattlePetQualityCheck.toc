@@ -1,4 +1,4 @@
-## Interface: 90001
+## Interface: 90005
 ## Title: Battle Pet Quality Check
 ## Author: datagutten
 
@@ -16,6 +16,7 @@
 libs\LibStub\LibStub.lua
 libs\LibPetJournal-2.0\CallbackHandler-1.0.lua
 libs\LibPetJournal-2.0\LibPetJournal-2.0.lua
+libs\BM-utils\addon\version.lua
 libs\BM-utils\addon\utils.lua
 #@end-no-lib-strip@
 BattlePetQualityCheck.lua
