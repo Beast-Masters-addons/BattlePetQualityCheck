@@ -26,6 +26,10 @@ local function GetHighestOwnedPetQuality(SpeciesId)
 	return highest_quality
 end
 
+function quality_color(quality)
+	return _G.ITEM_QUALITY_COLORS[quality-1].hex
+end
+
 function quality_string(quality)
 	return _G["BATTLE_PET_BREED_QUALITY"..quality]
 end
