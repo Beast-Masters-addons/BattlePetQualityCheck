@@ -147,9 +147,9 @@ EventFrame:SetScript("OnEvent", function(self, event,...)
 				if not owned_rarity then
 					-- Missing pet: [name]
 					--upgrade_text = "|cFFccff00 (Not owned)|r"
-					upgrade_text = utils:cprint('Not owned', 0xcc,0xff,0x00)
+					upgrade_text = utils:colorize('Not owned', 0xcc,0xff,0x00)
 				elseif owned_rarity < rarity then
-					upgrade_text = string.format('%s %s', colorize('Upgrade from', 'ccff00'), quality_color_string(owned_rarity))
+					upgrade_text = string.format('%s %s', utils:colorize('Upgrade from', 'ffccff00'), quality_color_string(owned_rarity))
 				else
 					upgrade_text = string.format('Already owns %s', quality_color_string(owned_rarity))
 				end
