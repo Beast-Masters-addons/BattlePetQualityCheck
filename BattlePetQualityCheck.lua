@@ -35,7 +35,7 @@ function quality_string(quality)
 end
 
 function quality_color_string(quality)
-	return _G.ITEM_QUALITY_COLORS[quality]["color"]:WrapTextInColorCode(quality_string(quality))
+	return _G.ITEM_QUALITY_COLORS[quality-1]["color"]:WrapTextInColorCode(quality_string(quality))
 end
 
 function colorize(text, color)
