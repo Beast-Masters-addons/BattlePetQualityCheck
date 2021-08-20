@@ -45,7 +45,7 @@ function colorize(text, color)
 	return string.format('|cFF%s%s|r', color, text)
 end
 
-function link(guid)
+local function pet_link(guid)
 	if type(guid) ~= "string" then --https://www.lua.org/pil/8.5.html
 		error("string expected", 2)
 	end
@@ -95,7 +95,7 @@ function pet_count_check(species_id, limit, quality_limit)
 		local OwnedSpeciesId, customName, level, xp, maxXp, displayID, isFavorite, name, icon, petType, creatureID, sourceText, description, isWild, canBattle, tradable, unique, obtainable = C_PetJournal.GetPetInfoByPetID(owned_pet_guid)
 		if isWild and OwnedSpeciesId == species_id then -- Pet has requested species
 			local _, _, _, _, quality = C_PetJournal.GetPetStats(owned_pet_guid)
-			links[owned_pet_guid] = link(owned_pet_guid)
+			links[owned_pet_guid] = pet_link(owned_pet_guid)
 			species_name = name
 			if not quality_counts[quality] then
 				quality_counts[quality] = 1
