@@ -1,12 +1,11 @@
 ## Interface: 90005
 ## Title: Battle Pet Quality Check
 ## Author: datagutten
-
 ## Version: @project-version@
-
 ## Notes: Displays quality at the start of a wild pet battle
 ## X-Curse-Project-ID: 313836
 ## X-WoWI-ID: 25769
+## SavedVariables: PetSpeciesCache
 
 #@non-no-lib-strip@
 # ## Dependencies: LibPetJournal-2.0, BM-utils
@@ -16,7 +15,11 @@
 libs\LibStub\LibStub.lua
 libs\LibPetJournal-2.0\CallbackHandler-1.0.lua
 libs\LibPetJournal-2.0\LibPetJournal-2.0.lua
-libs\BM-utils\addon\version.lua
-libs\BM-utils\addon\utils.lua
+libs\BM-utils\lib.xml
 #@end-no-lib-strip@
-BattlePetQualityCheck.lua
+addon\common.lua
+addon\events.lua
+addon\BattlePet.lua
+addon\BattlePetQuality.lua
+addon\BattlePetData.lua
+addon\main.lua

@@ -35,6 +35,23 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v1
 
+      - name: Get build utils
+        uses: actions/checkout@master
+        with:
+          name: Beast-Masters-addons/build_utils
+          path: tests/build_utils
+
+      - name: Install luacheck
+        run: |
+          apt-get update
+          apt-get -y install luarocks
+          luarocks install luacheck
+
+      - name: Run luacheck
+        run: |
+          luacheck addon
+          luacheck BattlePetQualityCheck.lua
+
       - name: WoW Packager
         uses: BigWigsMods/packager@v1.0.1
         with:

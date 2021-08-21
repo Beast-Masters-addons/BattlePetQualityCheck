@@ -1,3 +1,4 @@
 .release
 .idea
 libs/
+tests/build_utils
