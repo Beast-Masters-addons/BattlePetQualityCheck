@@ -41,14 +41,11 @@ jobs:
           name: Beast-Masters-addons/build_utils
           path: tests/build_utils
 
-      - name: Install luacheck
-        run: |
-          sudo apt-get update
-          sudo apt-get -y install luarocks
-          sudo luarocks install luacheck
-
-      - name: Run luacheck
-        run: luacheck addon
+      - name: Install and run Luacheck
+        uses: nebularg/actions-luacheck@v1
+        with:
+          path: 'addon'
+          annotate: warning
 
       - name: WoW Packager
         uses: BigWigsMods/packager@v1.0.1
