@@ -14,17 +14,21 @@ function lib.getPetBySpeciesName(name)
     end
 end
 
-lib.petSpecies = nil
+lib.petSpecies = {}
+
+function lib:addSpecies(speciesId, petId)
+    if type(self.petSpecies[speciesId]) ~= 'table' then
+        self.petSpecies[speciesId] = { petId }
+    else
+        table.insert(self.petSpecies[speciesId], petId)
+    end
+end
 
 function lib:scanSpecies()
     self.petSpecies = {}
     for _, petId in addon.LibPetJournal:IteratePetIDs() do
-        local speciesID = _G.C_PetJournal.GetPetInfoByPetID(petId)
-        if not self.petSpecies[speciesID] then
-            self.petSpecies[speciesID] = { petId }
-        else
-            table.insert(self.petSpecies[speciesID], petId)
-        end
+        local speciesId = _G.C_PetJournal.GetPetInfoByPetID(petId)
+        self:addSpecies(speciesId, petId)
     end
     _G.PetSpeciesCache = self.petSpecies
 end
@@ -55,6 +59,7 @@ function lib:getHighestOwnedPetQuality(speciesId)
 
     for _, petID in ipairs(pets) do
         local pet = addon.BattlePetData:petData(petID)
+        assert(pet.quality, ('Pet %d quality not found'):format(petID))
         if pet.quality > max_quality then
             max_quality = pet.quality
         end
@@ -64,9 +69,6 @@ end
 
 function lib:getPetsBelowLimit(speciesId, qualityLimit, quantityLimit)
     assert(speciesId, 'speciesId is empty')
-    if not self.petSpecies then
-        self:scanSpecies()
-    end
 
     local pet_objects = {}
     local max_quality_count = 0

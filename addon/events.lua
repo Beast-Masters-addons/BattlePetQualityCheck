@@ -29,7 +29,7 @@ function events.NEW_PET_ADDED(_, capturedPetGUID)
     --Pet Journal is not updated with captured pet, so we need to add it manually
     table.insert(addon.LibPetJournal._petids, capturedPetGUID)
     --Add captured pet to internal cache
-    table.insert(addon.BattlePet.petSpecies[CapturedSpeciesID], capturedPetGUID)
+    addon.BattlePet:addSpecies(CapturedSpeciesID, capturedPetGUID)
 
     addon.BattlePet:showPetsNotRare(CapturedSpeciesID, 4, 3)
 end
