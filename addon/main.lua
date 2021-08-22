@@ -12,3 +12,8 @@ _G.SlashCmdList['PETQ'] = function(msg)
         addon.BattlePet:showPetsNotRare(tonumber(msg), 4, 3)
     end
 end
+
+_G.SLASH_PETSCAN1 = "/petscan"
+_G.SlashCmdList['PETSCAN'] = function()
+    addon.BattlePet:scanSpecies()
+end
