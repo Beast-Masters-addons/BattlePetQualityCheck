@@ -26,6 +26,10 @@ function lib:petData(petGUID)
     o.speciesID, o.customName, o.level, o.xp, o.maxXp, o.displayID, o.isFavorite, o.name, o.icon, o.petType,
     o.creatureID, o.sourceText, o.description, o.isWild, o.canBattle, o.tradable,
     o.unique, o.obtainable = _G.C_PetJournal.GetPetInfoByPetID(petGUID)
+    if not o.speciesID then
+        addon.utils:error('No data for pet with GUID ' .. petGUID)
+        return
+    end
 
     o.health, o.maxHealth, o.power, o.speed, o.quality = _G.C_PetJournal.GetPetStats(petGUID)
 

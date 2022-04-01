@@ -59,8 +59,7 @@ function lib:getHighestOwnedPetQuality(speciesId)
 
     for _, petID in ipairs(pets) do
         local pet = addon.BattlePetData:petData(petID)
-        assert(pet.quality, ('Pet %d quality not found'):format(petID))
-        if pet.quality > max_quality then
+        if pet ~= nil and pet.quality > max_quality then
             max_quality = pet.quality
         end
     end
