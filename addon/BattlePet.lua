@@ -16,6 +16,9 @@ end
 
 lib.petSpecies = {}
 
+---Add a pet to species cache
+---@param speciesId number Species ID
+---@param petId string Pet GUID
 function lib:addSpecies(speciesId, petId)
     if type(self.petSpecies[speciesId]) ~= 'table' then
         self.petSpecies[speciesId] = { petId }
@@ -33,6 +36,9 @@ function lib:scanSpecies()
     _G.PetSpeciesCache = self.petSpecies
 end
 
+---Get all owned pets of a given species
+---@param speciesId number Species ID
+---@return table List with pet GUIDs
 function lib:getPetsBySpecies(speciesId)
     if not self.petSpecies or next(self.petSpecies) == nil then
         self:scanSpecies()
