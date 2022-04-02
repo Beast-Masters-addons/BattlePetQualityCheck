@@ -5,6 +5,7 @@
 ## Notes: Displays quality at the start of a wild pet battle
 ## X-Curse-Project-ID: 313836
 ## X-WoWI-ID: 25769
+## X-Wago-ID: vEGPRj61
 ## SavedVariables: PetSpeciesCache
 
 #@non-no-lib-strip@
