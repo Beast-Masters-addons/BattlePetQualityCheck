@@ -29,9 +29,13 @@ end
 
 function lib:scanSpecies()
     self.petSpecies = {}
-    for _, petId in addon.LibPetJournal:IteratePetIDs() do
-        local speciesId = _G.C_PetJournal.GetPetInfoByPetID(petId)
-        self:addSpecies(speciesId, petId)
+    for _, petGUID in addon.LibPetJournal:IteratePetIDs() do
+        local speciesId = _G.C_PetJournal.GetPetInfoByPetID(petGUID)
+        if not speciesId then
+            addon.utils:error('Unable to get species for pet with GUID ' .. petGUID)
+        else
+            self:addSpecies(speciesId, petGUID)
+        end
     end
     _G.PetSpeciesCache = self.petSpecies
 end
