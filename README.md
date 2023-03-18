@@ -5,6 +5,5 @@ When a new pet is captured the addon will check if you have any pets of the same
 
 To create a complete Pet-Battle experience, also try these add-ons:
 
-
-- [BattlePetCount](https://www.curseforge.com/wow/addons/battlepetcount "BattlePetCount")
-- [PetBattle Teams](https://www.curseforge.com/wow/addons/pet-battle-teams "PetBattle Teams")
+* [BattlePetCount NG](https://github.com/GurliGebis/WoWAddon-BattlePetCountNG): Show how many pets of the encountered species you already own and their quality.
+* [PetBattle Teams](https://addons.wago.io/addons/pet-battle-teams): Organize your pets into teams.
