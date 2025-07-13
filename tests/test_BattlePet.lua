@@ -1,6 +1,7 @@
 loadfile('build_utils/wow_api/PetJournal.lua')()
 loadfile('build_utils/wow_api/frame.lua')()
 loadfile('build_utils/wow_api/functions.lua')()
+_G.tinsert = table.insert
 loadfile('build_utils/utils/load_toc.lua')('../BattlePetQualityCheck.toc')
 
 local lu = require('luaunit')
