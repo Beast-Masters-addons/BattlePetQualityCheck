@@ -37,9 +37,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Get build utils
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
         with:
-          name: Beast-Masters-addons/build_utils
+          repository: Beast-Masters-addons/build_utils
           path: tests/build_utils
 
       - name: Install and run Luacheck
