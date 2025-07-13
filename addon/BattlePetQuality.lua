@@ -11,13 +11,13 @@ end
 function lib.petQualityColor(quality)
     assert(type(quality) == 'number')
     assert(quality >= 0 and quality <= 8)
-    return _G.ITEM_QUALITY_COLORS[quality - 1]
+    return _G.ITEM_QUALITY_COLORS[quality]
 end
 
 --/dump _G['BattlePetQuality'].quality_string(1)
 function lib.petQualityString(quality)
-    assert(quality >= 1, 'Quality must be at least 1 (poor)')
-    return _G["BATTLE_PET_BREED_QUALITY" .. quality]
+    assert(quality >= 0, 'Quality must be at least 0 (poor)')
+    return _G["BATTLE_PET_BREED_QUALITY" .. quality + 1]
 end
 
 function lib.wrapTextInQualityColor(quality, string)
