@@ -32,6 +32,7 @@ function lib:petData(petGUID)
     end
 
     o.health, o.maxHealth, o.power, o.speed, o.quality = _G.C_PetJournal.GetPetStats(petGUID)
+    o.quality = o.quality - 1 -- The quality from GetPetStats start at 1
 
     self.info = o
 
