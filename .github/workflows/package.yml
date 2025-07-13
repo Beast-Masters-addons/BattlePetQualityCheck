@@ -17,7 +17,51 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        game_version: [ 'mists', 'retail' ]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install lua dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install luarocks subversion
+          sudo luarocks install luaunit
+          sudo luarocks install luacov
+          sudo luarocks install luacheck
+
+      - name: Run luacheck
+        run: luacheck addon
+
+      - name: Build the addon
+        uses: BigWigsMods/packager@v2.4.3
+        with:
+          args: -g ${{ matrix.game_version }} -z -d
+
+      - name: Move libraries and compiled metadata files
+        run: |
+          mv .release/BattlePetQualityCheck/libs .
+          mv .release/BattlePetQualityCheck/BattlePetQualityCheck.toc .
+
+      - name: Run tests
+        run: for test in test*.lua; do lua -lluacov "$test"; done
+        working-directory: tests
+        env:
+          GAME_VERSION: ${{ matrix.game_version }}
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
