@@ -1,4 +1,4 @@
-## Interface: 100005
+## Interface: 50500, 100005
 ## Title: Battle Pet Quality Check
 ## Author: datagutten
 ## Version: @project-version@

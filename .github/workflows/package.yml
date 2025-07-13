@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        game_version: [ 'retail' ]
+        game_version: [ 'mists', 'retail' ]
 
     env:
       CF_API_KEY: ${{ secrets.CF_API_KEY }}
@@ -34,7 +34,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
 
       - name: Get build utils
         uses: actions/checkout@master
@@ -49,6 +49,6 @@ jobs:
           annotate: warning
 
       - name: WoW Packager
-        uses: BigWigsMods/packager@v1.0.1
+        uses: BigWigsMods/packager@v2.4.3
         with:
           args: -g ${{ matrix.game_version }} -o
