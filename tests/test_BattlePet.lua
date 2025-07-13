@@ -1,4 +1,3 @@
-loadfile('data.lua')()
 loadfile('build_utils/wow_api/PetJournal.lua')()
 loadfile('build_utils/wow_api/frame.lua')()
 loadfile('build_utils/wow_api/functions.lua')()

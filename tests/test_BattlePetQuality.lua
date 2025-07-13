@@ -1,4 +1,4 @@
-loadfile('data.lua')()
+loadfile('build_utils/wow_api/PetJournal.lua')()
 loadfile('build_utils/wow_api/mixin.lua')()
 loadfile('build_utils/wow_api/Color.lua')()
 loadfile('build_utils/wow_api/quality.lua')()
