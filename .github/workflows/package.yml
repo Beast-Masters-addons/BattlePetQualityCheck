@@ -26,7 +26,7 @@ jobs:
         game_version: [ 'mists', 'retail' ]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: recursive
 
@@ -42,7 +42,7 @@ jobs:
         run: luacheck addon
 
       - name: Build the addon
-        uses: BigWigsMods/packager@v2.4.3
+        uses: BigWigsMods/packager@v2
         with:
           args: -g ${{ matrix.game_version }} -z -d
 
@@ -78,7 +78,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: true
 
@@ -89,4 +89,4 @@ jobs:
           annotate: warning
 
       - name: WoW Packager
-        uses: BigWigsMods/packager@v2.4.3
+        uses: BigWigsMods/packager@v2
